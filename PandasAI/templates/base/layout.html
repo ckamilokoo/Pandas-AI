@@ -1,0 +1,130 @@
+{% load static %}
+
+<!doctype html>
+<html lang="es">
+
+<head>
+    <title>PandasAI</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'favicon/favicon.png' %}" />
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/deecb3ce02.js" crossorigin="anonymous"></script>
+
+    <!-- Mis estilos CSS -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="" style="background-color: rgb(246,145,86);">
+        <div class="container d-flex py-2">
+
+            <!-- Agregar la imagen como logo -->
+        <img src="{% static 'images/logopanda.png' %}" alt="Logo de PandasAI" class="mr-2" style="height: 44px;">
+            
+            <a class="m-0 p-0 nav-logo" href="/" style="color: black;">
+                PandasAI
+            </a>
+    
+            <div class="ml-auto d-flex">
+                {% if user.is_authenticated %}
+                <!-- Estas conectado como: { { user.get_username } }  -->
+                <a role="button" class="btn btn-secondary mr-3" title="Salir" href="#">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+                {% else %}
+                <a role="button" class="btn btn-primary mr-3" href="#">
+                    Ingresar
+                </a>  
+                <a role="button" class="btn btn-secondary mr-3" href="#">
+                    Registrarse
+                </a>
+                {% endif %}
+            </div>
+
+        </div>
+    </header>
+
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-md navbar-light border">
+        <div class="container py-2 ">
+
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Inicio</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">LLM</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{#}">Instructivo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{#}">Acerca de</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mailto:datamindscontact@gmail.com">Contacto</a>
+                    </li>
+
+                    <!-- PARA ADMINS/MODERADORES -->
+                    {% if user.is_superuser %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{#}">Agregar producto</a>
+                        </li>
+                    {% endif %}
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="container my-3">
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="p-3 border-top" style="background-color: rgb(246,145,86);">
+        <div class="container">
+            <p class="p-0 m-0 mb-2 logo-empresa-footer" style="color: black;">PandasAI | Derechos reservados &reg;</p>
+            <p class="p-0 m-0 mx-5" style="color: black;">Desarrollado por Equipo DataMinds</p>
+            <!-- <p class="p-0 m-0"> </p> -->
+        </div>
+    </footer>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
