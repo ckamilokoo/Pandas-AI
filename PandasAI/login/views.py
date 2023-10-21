@@ -8,28 +8,27 @@ from django.contrib.auth.forms import UserCreationForm ,AuthenticationForm
 from django.shortcuts import render, redirect 
 from django.contrib import messages  
 
-class Vregistro(View):          
-    def get(self, request):        
-        form = UserCreationForm()   
+class Vregistro(View):
+    def get(self, request):
+        form = UserCreationForm()
+        return render(request, 'login/registro.html', {'form': form})
 
-        return render(request, 'login/registro.html', {'form': form}) 
-         
-    def post(self, request):         
-        form = UserCreationForm(request.POST)         
-        if form.is_valid():    
-         
-            try:
-                username = form.cleaned_data.get('username')                 
-                password = form.cleaned_data.get('password1')                 
-                user = form.save()                 
-                user = authenticate(request, username=username, password=password)                 
-                login(request, user)                
-                return redirect("home")             
-            except:                
-                return HttpResponseBadRequest("Error al registrar al usuario")
+    def post(self, request):
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            nivel = form.cleaned_data.get('nivel')  # Obtén el nivel del formulario
+            user = form.save()
+            user.nivel = nivel  # Asigna el nivel al usuario
+            user.save()
 
+            user = authenticate(request, username=username, password=password)
+            login(request, user)
+            return redirect("home")
         else:
             return render(request, 'login/registro.html', {'form': form})
+
 
 def cerrar_sesion(request):
         logout(request)
