@@ -1,0 +1,17 @@
+{% extends "base/layout.html" %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<div style="width: 75%; margin:auto; ">
+
+  <h2>Registro</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" value="Registrarse">Registrarse</button>
+  </form>
+  
+
+</div>
+
+{% endblock %}

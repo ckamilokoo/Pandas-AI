@@ -1,5 +1,8 @@
 {% load static %}
 
+{% load crispy_forms_tags %}
+
+
 <!doctype html>
 <html lang="es">
 
@@ -36,24 +39,23 @@
             <a class="m-0 p-0 nav-logo" href="/" style="color: black;">
                 PandasAI
             </a>
-    
-            <div class="ml-auto d-flex">
+                <div class="float-right ml-auto">
                 {% if user.is_authenticated %}
-                <!-- Estas conectado como: { { user.get_username } }  -->
-                <a role="button" class="btn btn-secondary mr-3" title="Salir" href="#">
-                    <i class="fas fa-sign-out-alt"></i>
-                </a>
+                  <p style="color:white;">Hola, {{ user.username }} (<a href="{% url 'cerrar_sesion' %}"style="color:white;">Cerrar sesión</a>)</p>
                 {% else %}
-                <a role="button" class="btn btn-primary mr-3" href="#">
-                    Ingresar
-                </a>  
-                <a role="button" class="btn btn-secondary mr-3" href="#">
-                    Registrarse
-                </a>
+                  <p><a href="{% url 'iniciar_sesion' %}"style="color:white;">Iniciar sesión</a></p>
+                  <a href="{% url 'login' %}" class="btn btn-primary float-right"style="color:white;">Registrarse</a>
                 {% endif %}
-            </div>
+          
+          
+                </div>
+    
+            
 
         </div>
+
+        
+
     </header>
 
     <!-- NAV -->
