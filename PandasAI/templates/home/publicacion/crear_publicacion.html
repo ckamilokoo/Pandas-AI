@@ -1,0 +1,22 @@
+{% extends "base/layout.html" %}
+
+{% block content %}
+
+<body>
+
+    <h1>Crear Publicación</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+    
+</body>
+
+
+
+
+
+
+
+{% endblock %}

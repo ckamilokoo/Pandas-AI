@@ -1,0 +1,33 @@
+{% extends "base/layout.html" %}
+
+{% block content %}
+
+
+
+<body>
+    <h1>Listado de Publicaciones</h1>
+    <ul>
+      {% for publicacion in publicaciones %}
+        <li>
+          {{ publicacion.titulo }}
+          <a href="{% url 'actualizar_publicacion' publicacion.id %}">Editar</a>
+          <form method="post" action="{% url 'eliminar_publicacion' publicacion.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="publicacion_id" value="{{ publicacion.id }}">
+            <button type="submit" onclick="return confirmarEliminar()">Eliminar</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+    <a href="{% url 'crear_publicacion' %}">Crear Nueva Publicación</a>
+    
+    <script>
+      function confirmarEliminar() {
+        return confirm("¿Estás seguro de que deseas eliminar esta publicación?");
+      }
+    </script>
+    
+</body>
+
+
+{% endblock %}
