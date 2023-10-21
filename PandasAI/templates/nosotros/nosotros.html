@@ -1,0 +1,123 @@
+{% extends "base/layout.html" %}
+{% load static %}
+{% block content %}
+
+<style>
+    .card {
+    position: relative;
+    width: 190px;
+    height: 255px;
+    background: #f00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(315deg,#03a9f4,#ff0058);
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(315deg,#03a9f4,#ff0058);
+    filter: blur(30px);
+}
+
+.card .content {
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: scale(1);
+    transition: 0.5s;
+}
+
+.card:hover .content {
+    transform: scale(0); /* Oculta el contenido cuando el usuario pasa el mouse */
+    bottom: 0;
+}
+
+.card img.card-img {
+    position:absolute;
+    z-index: 2;
+    scale: 1; /* Cambiado a escala 1 para que la imagen no se achique al pasar el mouse */
+    opacity: 0;
+    transition: 0.3s;
+    max-width: 100%;
+    max-height: 100%; /* Añadido para asegurar que la imagen se vea completa */
+    top: 50%; /* Añadido para centrar verticalmente la imagen */
+    left: 50%; /* Añadido para centrar horizontalmente la imagen */
+    transform: translate(-50%, -50%); /* Añadido para centrar la imagen en la tarjeta */
+}
+
+
+.card:hover img.card-img {
+    opacity: 1;
+}
+
+</style>
+
+<section class="row mt-3">
+
+    <!-- Titulo -->
+    <div class="col-12 mb-4 text-center text-center text-md-left">
+        <h3 class="display-4">Nuestro Equipo...</h3>
+        <h4 class="h4 mt-3">Somos DataMinds!</h4>
+        <p>DataMinds es un equipo apasionado por la ciencia de datos y la inteligencia artificial. Nuestra misión es simplificar el análisis y la manipulación de datos para hacerlos accesibles a todos. Creemos que la toma de decisiones basada en datos puede transformar negocios y mejorar la vida de las personas.</p>
+        <p>Nuestro proyecto, PandasAI, es el resultado de años de experiencia en el campo de la ciencia de datos y el desarrollo de software. PandasAI combina lo mejor de la biblioteca Pandas de Python con la inteligencia artificial para brindar una herramienta poderosa y fácil de usar para el análisis de datos.</p>
+        <p>Estamos comprometidos con la excelencia técnica y la satisfacción del usuario. Nuestro equipo multidisciplinario está formado por expertos en programación, diseño de interfaces de usuario, análisis de datos y más. Trabajamos incansablemente para mejorar continuamente PandasAI y ofrecer la mejor experiencia posible a nuestros usuarios.</p>
+        <p>Gracias por unirte a nosotros en este emocionante viaje. ¡Esperamos que disfrutes de PandasAI y que encuentres valor en nuestras herramientas y recursos para el análisis de datos!</p>
+        Todos los Derechos Reservados DataMinds ©</p>
+    </div>          
+        </section>
+        <section class="container">
+            <div class="row">
+              <div class="card">
+                <img src="{% static 'images/CamiloC.png' %}" alt="" class="card-img">
+                <div class="content">
+                    <p class="title">Camilo Campos<br><span>Gerente de proyecto</span></p>
+                    <ul class="sci">
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+              <img src="{% static 'images/javi.p.png' %}" alt="" class="card-img">
+              <div class="content">
+                  <p class="title">Javiera Parra<br><span>Desarrollador</span></p>
+                  <ul class="sci">
+                  </ul>
+              </div>
+          </div>
+          <div class="card">
+            <img src="{% static 'images/jose.png' %}" alt="" class="card-img">
+            <div class="content">
+                <p class="title">José Fernández<br><span>Desarrollador</span></p>
+                <ul class="sci">
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+          <img src="{% static 'images/Alex.png' %}" alt="" class="card-img">
+          <div class="content">
+              <p class="title">Alex Perez<br><span>Desarrollador</span></p>
+              <ul class="sci">
+              </ul>
+          </div>
+      </div>
+        </section>
+{% endblock %}
