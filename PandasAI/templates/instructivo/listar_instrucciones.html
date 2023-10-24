@@ -1,0 +1,11 @@
+{% extends "base/layout.html" %}
+
+{% block content %}
+  <h1>Listado de Instrucciones</h1>
+
+  <ul>
+    {% for instruccion in instrucciones %}
+      <li>{{ instruccion.titulo }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
