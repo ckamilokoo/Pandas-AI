@@ -4,7 +4,7 @@
 
 <h2>Listado de Instrucciones</h2>
     <a href="{% url 'crear_instruccion' %}">Nueva Instrucción</a>
-    <div class="myCard"">
+    <div class="myCard">
         {% for instruccion in object_list %}
         <div class="innerCard" style="display: inline-block;">
             <div class="frontSide">
