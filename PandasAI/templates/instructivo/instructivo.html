@@ -3,7 +3,9 @@
 {% block content %}
 
 <h2>Listado de Instrucciones</h2>
+{% if user.is_staff %}
 <a href="{% url 'crear_instruccion' %}">Nueva Instrucción</a>
+{% endif %}
 <div class="myCardContainer">
     {% for instruccion in object_list %}
         <div class="myCard">
@@ -15,8 +17,10 @@
                 <div class="backSide">
                     <p class="title">{{ instruccion.titulo }}</p>
                     <p>{{ instruccion.contenido }}</p>
+                    {% if user.is_staff %}
                     <a href="{% url 'editar_instruccion' instruccion.pk %}">Editar</a>
                     <a href="{% url 'eliminar_instruccion' instruccion.pk %}">Eliminar</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
