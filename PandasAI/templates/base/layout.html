@@ -99,6 +99,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="#">LLM</a>
                     </li>
+                    
                     <li class="nav-item active">
                         <a class="nav-link" href="{% url 'listar_instrucciones' %}">Instructivo</a>
                     </li>
@@ -108,13 +109,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="mailto:datamindscontact@gmail.com">Contacto</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'subscripcion' %}">Subscribirse</a>
+                    </li>
 
                     <!-- PARA ADMINS/MODERADORES -->
-                    {% if user.is_superuser %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{#}">Subscribirse</a>
-                        </li>
-                    {% endif %}
+                    
+                    
+                    
 
                 </ul>
             </div>
