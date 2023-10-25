@@ -3,22 +3,28 @@
 {% block content %}
 
 <h2>Listado de Instrucciones</h2>
-    <a href="{% url 'crear_instruccion' %}">Nueva Instrucción</a>
-    <div class="myCard"">
-        {% for instruccion in object_list %}
-        <div class="innerCard" style="display: inline-block;">
-            <div class="frontSide">
-                <p class="title">{{ instruccion.titulo }}</p>
-                <p></p>
-            </div>
-            <div class="backSide">
-                <p class="title">{{ instruccion.titulo }}</p>
-                <p>{{ instruccion.contenido }}</p>
-                <a href="{% url 'editar_instruccion' instruccion.pk %}">Editar</a>
-                <a href="{% url 'eliminar_instruccion' instruccion.pk %}">Eliminar</a>
+{% if user.is_staff %}
+<a href="{% url 'crear_instruccion' %}">Nueva Instrucción</a>
+{% endif %}
+<div class="myCardContainer">
+    {% for instruccion in object_list %}
+        <div class="myCard">
+            <div class="innerCard">
+                <div class="frontSide">
+                    <p class="title">{{ instruccion.titulo }}</p>
+                    <p></p>
+                </div>
+                <div class="backSide">
+                    <p class="title">{{ instruccion.titulo }}</p>
+                    <p>{{ instruccion.contenido }}</p>
+                    {% if user.is_staff %}
+                    <a href="{% url 'editar_instruccion' instruccion.pk %}">Editar</a>
+                    <a href="{% url 'eliminar_instruccion' instruccion.pk %}">Eliminar</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
-        {% endfor %}
-    </div>
+    {% endfor %}
+</div>
 
 {% endblock %}

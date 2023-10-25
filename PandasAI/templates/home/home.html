@@ -1,8 +1,10 @@
 {% extends "base/layout.html" %}
 
 {% block content %}
+
 <body>
-    <h1>Publicaciones</h1>
+    <div>
+        <h1>Publicaciones</h1>
     <ul>
         {% for publicacion in publicaciones %}
             <h2>{{ publicacion.titulo }}</h2>
@@ -16,6 +18,8 @@
             <p>Fecha de Publicación: {{ publicacion.fecha_publicacion }}</p>
         {% endfor %}
     </ul>
+    </div>
+    
 </body>
 
         
