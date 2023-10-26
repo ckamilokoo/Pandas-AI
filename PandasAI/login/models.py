@@ -4,8 +4,8 @@ from django.db import models
 class CustomUser(AbstractUser):
     NIVEL_CHOICES = (
         (1, 'Usuario Normal'),
-        (2, 'Usuario con Subscripción A y B'),
-        (3, 'Administrador'),
+        (2, 'Usuario con Subscripción A'),
+        (3, 'Usuario con Subscripción B'),
     )
 
     nivel = models.PositiveSmallIntegerField(choices=NIVEL_CHOICES, default=1)
