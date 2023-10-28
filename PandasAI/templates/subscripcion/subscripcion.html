@@ -1,12 +1,16 @@
 {% extends "base/layout.html" %}
 
 {% block content %}
+{% if user.is_authenticated %}
 
+
+{% endif %}
 <div class="container">
     <div class="d-flex flex-row">
         <div class="col-md-4">
+            {% if user.nivel != 2 %}
             <div class="card mb-4">
-                <div class="card-body d-flex flex-column align-items-center justify-content-center"> <!-- Agrega las clases aquí -->
+                <div class="card-body d-flex flex-column align-items-center justify-content-center">
                     <h5 class="card-title">Actualizar a Nivel 2</h5>
                     <p class="card-text">Conviértete en un usuario con Subscripción A</p>
                     <form action="{% url 'actualizar_nivel' 2 %}" method="post">
@@ -15,11 +19,13 @@
                     </form>
                 </div>
             </div>
+            {% endif %}
         </div>
 
         <div class="col-md-4">
+            {% if user.nivel != 3 %}
             <div class="card mb-4">
-                <div class="card-body d-flex flex-column align-items-center justify-content-center"> <!-- Agrega las clases aquí -->
+                <div class="card-body d-flex flex-column align-items-center justify-content-center">
                     <h5 class="card-title">Actualizar a Nivel 3</h5>
                     <p class="card-text">Conviértete en un usuario con Subscripción B</p>
                     <form action="{% url 'actualizar_nivel' 3 %}" method="post">
@@ -28,19 +34,22 @@
                     </form>
                 </div>
             </div>
+            {% endif %}
         </div>
 
         <div class="col-md-4">
-            <div class="card mb-4">
-                <div class="card-body d-flex flex-column align-items-center justify-content-center"> <!-- Agrega las clases aquí -->
-                    <h5 class="card-title">Cancelar Nivel</h5>
-                    <p class="card-text">Vuelve a ser un usuario normal</p>
-                    <form action="{% url 'cancelar_nivel' %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Cancelar Nivel</button>
-                    </form>
+            {% if user.nivel != 1 %}
+                <div class="card mb-4">
+                    <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                        <h5 class="card-title">Cancelar Nivel</h5>
+                        <p class="card-text">Vuelve a ser un usuario normal</p>
+                        <form action="{% url 'cancelar_nivel' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Cancelar Nivel</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
     </div>
 </div>

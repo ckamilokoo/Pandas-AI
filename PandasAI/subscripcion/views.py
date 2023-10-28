@@ -13,7 +13,7 @@ def actualizar_nivel(request, nuevo_nivel):
     user = request.user
 
     # Verifica si el usuario es un usuario normal y el nuevo nivel es válido para subir a nivel 2
-    if user.nivel == 1 and nuevo_nivel == 2:
+    if user.nivel in [2, 3] and nuevo_nivel == 2:
         user.nivel = nuevo_nivel
         user.save()
         messages.success(request, "Tu nivel se ha actualizado a Usuario Nivel 2.")
@@ -47,5 +47,6 @@ def cancelar_nivel(request):
 # Create your views here.
 @login_required
 def subscripcion(request):
-    return render(request, 'subscripcion/subscripcion.html')
+    nivel_usuario = request.user.nivel
+    return render(request, 'subscripcion/subscripcion.html', {'nivel_usuario': nivel_usuario})
 

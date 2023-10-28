@@ -10,6 +10,7 @@ from .forms import PublicacionForm  # Asegúrate de tener el formulario definido
 
 def home(request):
     publicaciones = Publicacion.objects.all()
+    
     return render(request, 'home/home.html', {'publicaciones': publicaciones})
 
 def crear_publicacion(request):
