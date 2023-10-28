@@ -457,7 +457,7 @@ footer div > p{
   z-index: -1;
   border-radius: 1em;
   filter: blur(20px);
-  animation: animate 5s linear infinite;
+  animation: animate 4s linear infinite;
 }
 
 @keyframes animate {
@@ -478,5 +478,10 @@ footer div > p{
 /* Footer */
 
 .footerstyle{
-  background-color: rgb(246,145,86); 
+  background-color: rgb(246,145,86);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0; /* Ajusta el espaciado según tus preferencias */
 }
