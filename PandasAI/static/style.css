@@ -23,11 +23,6 @@ a{
     text-decoration: none !important;
 }
 
-footer div > p{
-    display: flex;
-    justify-content: center;
-}
-
 .card-body-3-productos-home{
     text-align: center;
 }
@@ -479,9 +474,7 @@ footer div > p{
 
 .footerstyle{
   background-color: rgb(246,145,86);
-  position: fixed;
-  bottom: 0;
-  width: 100%;
   text-align: center;
   padding: 10px 0; /* Ajusta el espaciado según tus preferencias */
+  margin-top: 271px; /* Ajusta el margen superior según tus preferencias */
 }
