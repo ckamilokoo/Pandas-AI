@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<h2>Listado de Instrucciones</h2>
+<h2 class="instructivotitle">Instructivo PandasAI</h2>
 {% if user.is_staff %}
 <a href="{% url 'crear_instruccion' %}">Nueva Instrucción</a>
 {% endif %}

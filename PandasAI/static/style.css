@@ -372,6 +372,15 @@ footer div > p{
   }
 
 /* Card Instrucciones*/
+
+.instructivotitle{
+  font-size: 2.8em;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
 .myCardContainer {
   flex-wrap: wrap;
   justify-content: space-between; /* Ajusta esto según tus preferencias */
@@ -465,3 +474,8 @@ footer div > p{
 
 /* Fin Card Instrucciones */
 
+/* Footer */
+
+.footerstyle{
+  background-color: rgb(246,145,86); 
+}
