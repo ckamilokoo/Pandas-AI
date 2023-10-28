@@ -23,11 +23,6 @@ a{
     text-decoration: none !important;
 }
 
-footer div > p{
-    display: flex;
-    justify-content: center;
-}
-
 .card-body-3-productos-home{
     text-align: center;
 }
@@ -412,7 +407,7 @@ footer div > p{
   text-align: center;
   transform-style: preserve-3d;
   cursor: pointer;
-  transition: transform 0.8s;
+  transition: transform 0.4s ease-in-out;
 }
 
 .myCard:hover .innerCard {
@@ -457,7 +452,7 @@ footer div > p{
   z-index: -1;
   border-radius: 1em;
   filter: blur(20px);
-  animation: animate 5s linear infinite;
+  animation: animate 4s linear infinite;
 }
 
 @keyframes animate {
@@ -478,5 +473,8 @@ footer div > p{
 /* Footer */
 
 .footerstyle{
-  background-color: rgb(246,145,86); 
+  background-color: rgb(246,145,86);
+  text-align: center;
+  padding: 10px 0; /* Ajusta el espaciado según tus preferencias */
+  margin-top: 271px; /* Ajusta el margen superior según tus preferencias */
 }

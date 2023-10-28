@@ -5,23 +5,22 @@
 <body>
     <div>
         <h1>Publicaciones</h1>
-    <ul>
-        {% for publicacion in publicaciones %}
-            <h2>{{ publicacion.titulo }}</h2>
-            <p>{{ publicacion.contenido }}</p>
+        <ul>
+            {% for publicacion in publicaciones %}
+                <li>
+                    <h2>{{ publicacion.titulo }}</h2>
+                    <p>{{ publicacion.contenido }}</p>
+                    
+                    
+                    <img src="{{ publicacion.imagen.url }}" alt="{{ publicacion.titulo }}">
+                    
 
-            {% if publicacion.imagen %}
-                <img src="{{ publicacion.imagen.url }}" alt="{{ publicacion.titulo }}">
-            {% endif %}
-
-            <p>Autor: {{ publicacion.autor }}</p>
-            <p>Fecha de Publicación: {{ publicacion.fecha_publicacion }}</p>
-        {% endfor %}
-    </ul>
+                    <p>Autor: {{ publicacion.autor }}</p>
+                    <p>Fecha de Publicación: {{ publicacion.fecha_publicacion }}</p>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
-    
 </body>
-
-        
 
 {% endblock %}

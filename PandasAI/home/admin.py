@@ -1,5 +1,8 @@
 from django.contrib import admin
 from .models import Publicacion
+from django.contrib import admin
+from django.contrib.auth.models import User  # Importa el modelo de usuario aquí
+
 
 
 
@@ -7,3 +10,4 @@ from .models import Publicacion
 
 
 admin.site.register(Publicacion)
+admin.site.register(User)  # Registra el modelo de usuario
