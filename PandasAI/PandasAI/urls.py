@@ -25,10 +25,11 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('home.urls')),
     path('login/',include('login.urls')),
-    
+    path('agentelangchain/', include('agentelangchain.urls')),
     path('nosotros/', include('nosotros.urls')),
     path('instructivo/', include('instructivo.urls')),
     path('subscripcion/', include('subscripcion.urls')),
+    path('subir_csv/', include('subir_csv.urls')),
 ]
 
 if settings.DEBUG:

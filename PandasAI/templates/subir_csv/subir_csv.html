@@ -1,0 +1,39 @@
+{% extends "base/layout.html" %}
+{% load static %}
+{% block title %}subir csv {% endblock %}
+
+{% block content %}
+
+<style>
+    /* Estilos para centrar la tarjeta */
+    .card-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Esto centra verticalmente la tarjeta en la ventana */
+    }
+
+    .card {
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 400px; /* Ancho de la tarjeta */
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<div class="card-container">
+    <div class="card">
+        <h1>Subir un archivo CSV</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Cargar CSV</button>
+        </form>
+    </div>
+</div>
+</body>
+
+
+{% endblock %}

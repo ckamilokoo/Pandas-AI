@@ -7,7 +7,5 @@ from django.contrib.auth.models import User  # Importa el modelo de usuario aqu√
 
 
 # Register your models here.
-
-
 admin.site.register(Publicacion)
 admin.site.register(User)  # Registra el modelo de usuario

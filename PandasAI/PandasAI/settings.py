@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     "instructivo",
     "nosotros",
     "subscripcion",
+    "agentelangchain",
+    "subir_csv",
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
