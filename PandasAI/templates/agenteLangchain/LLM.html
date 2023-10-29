@@ -1,0 +1,119 @@
+{% extends "base/layout.html" %}
+
+{% block content %}
+<style>
+    .form-group {
+      margin-bottom: 45px; /* Espacio entre elementos del formulario */
+  }
+  
+  /* Estilos para la tabla */
+  table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+  }
+  
+  th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+  }
+  
+  th {
+      background-color: #f2f2f2;
+  }
+  
+  /* Estilos para las cartas */
+  .card {
+  display: inline-block;
+  border: 1px solid #ccc; /* Borde para las cartas */
+  padding: 20px; /* Espaciado interno para las cartas */
+  margin: 10px; /* Margen externo para las cartas (esto agrega separación entre ellas) */
+  display: inline-block; /* Esto alineará las cartas en línea horizontalmente */
+  width: 300px; /* Ancho fijo para las cartas (ajusta según tus necesidades) */
+  transition: transform 0.5s ease-in-out;
+  transform-origin: center;
+  background:red;
+  }
+  
+  
+  .card-container {
+  text-align: center;
+  }
+  
+  
+  </style>
+
+
+<body>
+<div class="card-container">
+    <div class="card">
+        <h1>Formulario de Pregunta</h1>
+        <div id="chat-card">
+            <div id="chat-container">
+                <form method="post" id="chat-form" action="{% url 'agente_langchain' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="text" id="question" name="question" placeholder="Escribe tu pregunta aquí">
+                    <select name="archivo_csv">
+                        <option value="" selected disabled>Selecciona un archivo CSV</option>
+                        {% for archivo in archivos_csv %}
+                        <option value="csv/{{ archivo }}">{{ archivo }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+      <div class="card">
+        <h1>Respuesta del Modelo</h1>
+        <div id="chat-response"></div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Función para mostrar la respuesta del chat
+        function mostrarRespuesta(respuesta) {
+            $('#chat-response').text(respuesta); // Establecer la respuesta como texto
+        }
+        // Manejar el evento de envío del formulario
+        $('#chat-form').on('submit', function(event) {
+            event.preventDefault();
+            // Obtener la pregunta del usuario
+            var pregunta = $('#question').val();
+      
+            // Limpiar el campo de entrada
+            $('#question').val('');
+      
+            // Mostrar un mensaje de espera en el chat
+            $('#chat-response').text('Esperando respuesta...');
+      
+            // Realizar una solicitud AJAX al servidor
+            $.ajax({
+              type: 'POST',
+              url: 'agentelangchain/agente_langchain/',  // Utiliza la URL de la vista de Django
+              data: {
+                pregunta: pregunta,  // Asegúrate de que coincida con el nombre del campo en tu vista de Django
+                archivo_csv: $('select[name="archivo_csv"]').val(),
+                csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+            },
+            success: function(data) {
+                // Obtener la respuesta del servidor
+                var respuesta = data.answer;
+                print(respuesta)
+      
+                // Mostrar la respuesta en el elemento con el id "chat-response"
+                $('#chat-response').html('<div class="respuesta">' + respuesta + '</div>');
+            },
+            error: function(xhr, textStatus, errorThrown) {
+                // Manejar errores en la solicitud AJAX
+                mostrarRespuesta('Error en la solicitud: ' + errorThrown);
+            }
+        });
+    });
+});
+</script>
+</body>
+
+{% endblock %}
